@@ -16,7 +16,6 @@ import (
 func main() {
 	// start a libp2p node with default settings
 	node, err := libp2p.New(
-		libp2p.ListenAddrStrings("/ip4/0.0.0.0/tcp/0"),
 		libp2p.Ping(false),
 	)
 	if err != nil {
@@ -32,8 +31,13 @@ func main() {
 		ID:    node.ID(),
 		Addrs: node.Addrs(),
 	}
+
 	addrs, err := peerstore.AddrInfoToP2pAddrs(&peerInfo)
-	fmt.Println("libp2p node address:", addrs[0])
+	fmt.Println("My addresses:")
+	for i, addr := range addrs {
+		fmt.Println(i+1, addr)
+	}
+	fmt.Println()
 
 	// if a remote peer has been passed on the command line, connect to it
 	// and send it 5 ping messages, otherwise wait for a signal to stop
