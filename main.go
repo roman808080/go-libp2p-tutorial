@@ -23,8 +23,8 @@ func main() {
 	}
 
 	// configure our own ping protocol
-	pingService := &ping.PingService{Host: node}
-	node.SetStreamHandler(ping.ID, pingService.PingHandler)
+	pingService := &CustomService{Host: node}
+	node.SetStreamHandler(ping.ID, pingService.CustomHandler)
 
 	// print the node's PeerInfo in multiaddr format
 	peerInfo := peerstore.AddrInfo{
