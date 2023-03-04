@@ -25,7 +25,7 @@ const (
 
 	ID = "/my/custom/1.0.0"
 
-	ServiceName = "libp2p.ping"
+	ServiceName = "my.custom"
 )
 
 type CustomService struct {
